@@ -3,7 +3,6 @@ const { MongoClient, ObjectID } = require('mongodb');
 const debug = require('debug')('app:bookRoutes');
 
 const bookRouter = express.Router();
-let books = [];
 
 
 function router(nav) {
@@ -22,7 +21,7 @@ function router(nav) {
 
           const col = await db.collection('books');
 
-          books = await col.find().toArray();
+          const books = await col.find().toArray();
 
           res.render(
             'bookListView',
